@@ -1,5 +1,5 @@
-MAIN = randomBitPop
-BENCH = tb_randomBitPop
+MAIN = randomPermGen
+BENCH = tb_randomPermGen
 SOURCES = *.v
 VERILOG = iverilog
 WAVE = gtkwave
@@ -16,4 +16,4 @@ wave: $(TOP).vcd
 
 .PHONY: clean
 clean:
-	rm -rf *.vcd $(MAIN).out
+	rm -rf *.vcd *.out
