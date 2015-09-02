@@ -5,13 +5,14 @@ VERILOG = iverilog
 WAVE = gtkwave
 
 .PHONY: all
-all: $(TOP).vcd
+all: $(MAIN).out
 
-$(TOP).vcd:
+$(MAIN).out:
 	$(VERILOG) -o $(MAIN).out -s $(BENCH) $(SOURCES)
-	./$(MAIN).out
 
-wave: $(TOP).vcd
+.PHONY: wave
+wave: $(MAIN).out
+	./$(MAIN).out
 	$(WAVE) $(MAIN).vcd > /dev/null 2>&1 &
 
 .PHONY: clean
