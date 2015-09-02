@@ -2,3 +2,19 @@ A_0, A_1, A_2, A_3, A_4, A_5, A_6, A_7, A_8, A_9, A_10, A_11, A_12, A_13, A_14, 
 B_0, B_1, B_2, B_3, B_4, B_5, B_6, B_7, B_8, B_9, B_10, B_11, B_12, B_13, B_14, B_15
 .A_0(A_0), .A_1(A_1), .A_2(A_2), .A_3(A_3), .A_4(A_4), .A_5(A_5), .A_6(A_6), .A_7(A_7), .A_8(A_8), .A_9(A_9), .A_10(A_10), .A_11(A_11), .A_12(A_12), .A_13(A_13), .A_14(A_14), .A_15(A_15)
 .B_0(B_0), .B_1(B_1), .B_2(B_2), .B_3(B_3), .B_4(B_4), .B_5(B_5), .B_6(B_6), .B_7(B_7), .B_8(B_8), .B_9(B_9), .B_10(B_10), .B_11(B_11), .B_12(B_12), .B_13(B_13), .B_14(B_14), .B_15(B_15)
+rotateSelect16 rot0(.A_all(A_all), .shift(4'd0 + shift), .res(B_all[3:0]));
+rotateSelect16 rot1(.A_all(A_all), .shift(4'd1 + shift), .res(B_all[7:4]));
+rotateSelect16 rot2(.A_all(A_all), .shift(4'd2 + shift), .res(B_all[11:8]));
+rotateSelect16 rot3(.A_all(A_all), .shift(4'd3 + shift), .res(B_all[15:12]));
+rotateSelect16 rot4(.A_all(A_all), .shift(4'd4 + shift), .res(B_all[19:16]));
+rotateSelect16 rot5(.A_all(A_all), .shift(4'd5 + shift), .res(B_all[23:20]));
+rotateSelect16 rot6(.A_all(A_all), .shift(4'd6 + shift), .res(B_all[27:24]));
+rotateSelect16 rot7(.A_all(A_all), .shift(4'd7 + shift), .res(B_all[31:28]));
+rotateSelect16 rot8(.A_all(A_all), .shift(4'd8 + shift), .res(B_all[35:32]));
+rotateSelect16 rot9(.A_all(A_all), .shift(4'd9 + shift), .res(B_all[39:36]));
+rotateSelect16 rot10(.A_all(A_all), .shift(4'd10 + shift), .res(B_all[43:40]));
+rotateSelect16 rot11(.A_all(A_all), .shift(4'd11 + shift), .res(B_all[47:44]));
+rotateSelect16 rot12(.A_all(A_all), .shift(4'd12 + shift), .res(B_all[51:48]));
+rotateSelect16 rot13(.A_all(A_all), .shift(4'd13 + shift), .res(B_all[55:52]));
+rotateSelect16 rot14(.A_all(A_all), .shift(4'd14 + shift), .res(B_all[59:56]));
+rotateSelect16 rot15(.A_all(A_all), .shift(4'd15 + shift), .res(B_all[63:60]));

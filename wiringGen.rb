@@ -14,8 +14,12 @@ wires.each do |wire|
 end
 
 wires.each do |wire|
-    puts "#{wires.index wire}th: #{wire}"
+    puts "//#{wires.index wire}th: #{wire}"
+    puts "module randomPerm#{wires.index wire}(A_all, B_all);"
+    puts "    input [63:0] A_all;"
+    puts "    output [63:0] B_all;"
     for i in (0...16) do
-        puts "assign B_#{i} = A_#{wire[i]};"
+        puts "    assign B_all[#{i*4+3}:#{i*4}] = A_all[#{wire[i]*4+3}:#{wire[i]*4}];"
     end
+    puts "endmodule"
 end
