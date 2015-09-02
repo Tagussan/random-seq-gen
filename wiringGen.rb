@@ -1,7 +1,7 @@
 wires = []
-wires[0] = (0...16).to_a.shuffle
-wires[1] = (0...16).to_a.shuffle
-wires[2] = (0...16).to_a.shuffle
+for i in (0...8) do
+    wires.push (0...16).to_a.shuffle
+end
 hs = Hash.new
 wires.each do |wire|
     for i in (0...16) do
@@ -14,8 +14,8 @@ wires.each do |wire|
 end
 
 wires.each do |wire|
-    p wire
+    puts "#{wires.index wire}th: #{wire}"
     for i in (0...16) do
-        puts "assign B[#{i}] = A[#{wire[i]}];"
+        puts "assign B_#{i} = A_#{wire[i]};"
     end
 end
