@@ -13,3 +13,11 @@ puts (0...16).map {|i|
 for i in (0...16) do
     puts "rotateSelect16 rot#{i}(.A_all(A_all), .shift(4'd#{i} + shift), .res(B_all[#{i*4+3}:#{i*4}]));"
 end
+puts (0...16).map {|i|
+    "4'b" + i.to_s(2).rjust(4,'0')
+}.join(', ')
+
+for i in (0...16) do
+    puts "rotateMapper16 rmap#{i}(.A_all(rmapin#{i}), .B_all(randwirein#{i}), .shift(rotaryPos[#{i*4+3}:#{i*4}]));"
+    puts "randomPerm#{i} rperm#{i}(.A_all(randwirein#{i}), .B_all(rmapin#{i+1}));"
+end

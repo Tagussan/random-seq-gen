@@ -1,15 +1,39 @@
-module rotateMapper16(A_all, B_all, clk, rst);
+module randomPermGen(clk, rst, seq_all);
+    input clk, rst;
+    output [63:0] seq_all;
+    reg [31:0] rotaryPos;
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            rotaryPos <= 0;
+        else begin
+            rotaryPos <= rotaryPos + 1;
+        end
+    end
+    wire [63:0] rmapin0, rmapin1, rmapin2, rmapin3, rmapin4, rmapin5, rmapin6, rmapin7;
+    wire [63:0] randwirein0, randwirein1, randwirein2, randwirein3, randwirein4, randwirein5, randwirein6, randwirein7;
+    rotateMapper16 rmap0(.A_all({4'b0000, 4'b0001, 4'b0010, 4'b0011, 4'b0100, 4'b0101, 4'b0110, 4'b0111, 4'b1000, 4'b1001, 4'b1010, 4'b1011, 4'b1100, 4'b1101, 4'b1110, 4'b1111}), .B_all(randwirein0), .shift(rotaryPos[3:0]));
+    randomPerm0 rperm0(.A_all(randwirein0), .B_all(rmapin1));
+    rotateMapper16 rmap1(.A_all(rmapin1), .B_all(randwirein1), .shift(rotaryPos[7:4]));
+    randomPerm1 rperm1(.A_all(randwirein1), .B_all(rmapin2));
+    rotateMapper16 rmap2(.A_all(rmapin2), .B_all(randwirein2), .shift(rotaryPos[11:8]));
+    randomPerm2 rperm2(.A_all(randwirein2), .B_all(rmapin3));
+    rotateMapper16 rmap3(.A_all(rmapin3), .B_all(randwirein3), .shift(rotaryPos[15:12]));
+    randomPerm3 rperm3(.A_all(randwirein3), .B_all(rmapin4));
+    rotateMapper16 rmap4(.A_all(rmapin4), .B_all(randwirein4), .shift(rotaryPos[19:16]));
+    randomPerm4 rperm4(.A_all(randwirein4), .B_all(rmapin5));
+    rotateMapper16 rmap5(.A_all(rmapin5), .B_all(randwirein5), .shift(rotaryPos[23:20]));
+    randomPerm5 rperm5(.A_all(randwirein5), .B_all(rmapin6));
+    rotateMapper16 rmap6(.A_all(rmapin6), .B_all(randwirein6), .shift(rotaryPos[27:24]));
+    randomPerm6 rperm6(.A_all(randwirein6), .B_all(rmapin7));
+    rotateMapper16 rmap7(.A_all(rmapin7), .B_all(randwirein7), .shift(rotaryPos[31:28]));
+    randomPerm7 rperm7(.A_all(randwirein7), .B_all(seq_all));
+endmodule
+
+module rotateMapper16(A_all, B_all, shift);
     input clk, rst;
     input [63:0] A_all;
+    input [3:0] shift;
     output [63:0] B_all;
-    reg [3:0] shift;
-    wire [63:0] A_all;
-    always @(posedge clk or posedge rst) begin
-        if(rst == 1)
-            shift <= 0;
-        else
-            shift <= shift + 1;
-    end
     rotateSelect16 rot0(.A_all(A_all), .shift(4'd0 + shift), .res(B_all[3:0]));
     rotateSelect16 rot1(.A_all(A_all), .shift(4'd1 + shift), .res(B_all[7:4]));
     rotateSelect16 rot2(.A_all(A_all), .shift(4'd2 + shift), .res(B_all[11:8]));
