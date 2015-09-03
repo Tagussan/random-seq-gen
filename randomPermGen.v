@@ -58,7 +58,7 @@ module rotateSelect16(A_all, shift, res);
     input [63:0] A_all;
     function [5:0] startbit;
         input [3:0] shift;
-        startbit = {2'b00, shift}; 
+        startbit = {shift, 2'b00}; 
     endfunction
     assign res = {A_all[5'd3 + startbit(shift)], A_all[5'd2 + startbit(shift)], A_all[5'd1 + startbit(shift)], A_all[5'd0 + startbit(shift)]};
 endmodule
