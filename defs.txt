@@ -35,19 +35,4 @@ rotateMapper16 rmap6(.A_all(rmapin6), .B_all(randwirein6), .shift(rotaryPos[27:2
 randomPerm6 rperm6(.A_all(randwirein6), .B_all(rmapin7));
 rotateMapper16 rmap7(.A_all(rmapin7), .B_all(randwirein7), .shift(rotaryPos[31:28]));
 randomPerm7 rperm7(.A_all(randwirein7), .B_all(rmapin8));
-rotateMapper16 rmap8(.A_all(rmapin8), .B_all(randwirein8), .shift(rotaryPos[35:32]));
-randomPerm8 rperm8(.A_all(randwirein8), .B_all(rmapin9));
-rotateMapper16 rmap9(.A_all(rmapin9), .B_all(randwirein9), .shift(rotaryPos[39:36]));
-randomPerm9 rperm9(.A_all(randwirein9), .B_all(rmapin10));
-rotateMapper16 rmap10(.A_all(rmapin10), .B_all(randwirein10), .shift(rotaryPos[43:40]));
-randomPerm10 rperm10(.A_all(randwirein10), .B_all(rmapin11));
-rotateMapper16 rmap11(.A_all(rmapin11), .B_all(randwirein11), .shift(rotaryPos[47:44]));
-randomPerm11 rperm11(.A_all(randwirein11), .B_all(rmapin12));
-rotateMapper16 rmap12(.A_all(rmapin12), .B_all(randwirein12), .shift(rotaryPos[51:48]));
-randomPerm12 rperm12(.A_all(randwirein12), .B_all(rmapin13));
-rotateMapper16 rmap13(.A_all(rmapin13), .B_all(randwirein13), .shift(rotaryPos[55:52]));
-randomPerm13 rperm13(.A_all(randwirein13), .B_all(rmapin14));
-rotateMapper16 rmap14(.A_all(rmapin14), .B_all(randwirein14), .shift(rotaryPos[59:56]));
-randomPerm14 rperm14(.A_all(randwirein14), .B_all(rmapin15));
-rotateMapper16 rmap15(.A_all(rmapin15), .B_all(randwirein15), .shift(rotaryPos[63:60]));
-randomPerm15 rperm15(.A_all(randwirein15), .B_all(rmapin16));
+seq_all[63:60], seq_all[59:56], seq_all[55:52], seq_all[51:48], seq_all[47:44], seq_all[43:40], seq_all[39:36], seq_all[35:32], seq_all[31:28], seq_all[27:24], seq_all[23:20], seq_all[19:16], seq_all[15:12], seq_all[11:8], seq_all[7:4], seq_all[3:0]

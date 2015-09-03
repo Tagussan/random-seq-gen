@@ -1,14 +1,6 @@
-module randomPermGen(clk, rst, seq_all);
-    input clk, rst;
+module randomPermGen(rotaryPos, seq_all);
+    input [31:0] rotaryPos;
     output [63:0] seq_all;
-    reg [31:0] rotaryPos;
-    always @(posedge clk or posedge rst) begin
-        if (rst)
-            rotaryPos <= 0;
-        else begin
-            rotaryPos <= rotaryPos + 1;
-        end
-    end
     wire [63:0] rmapin0, rmapin1, rmapin2, rmapin3, rmapin4, rmapin5, rmapin6, rmapin7;
     wire [63:0] randwirein0, randwirein1, randwirein2, randwirein3, randwirein4, randwirein5, randwirein6, randwirein7;
     rotateMapper16 rmap0(.A_all({4'b0000, 4'b0001, 4'b0010, 4'b0011, 4'b0100, 4'b0101, 4'b0110, 4'b0111, 4'b1000, 4'b1001, 4'b1010, 4'b1011, 4'b1100, 4'b1101, 4'b1110, 4'b1111}), .B_all(randwirein0), .shift(rotaryPos[3:0]));
