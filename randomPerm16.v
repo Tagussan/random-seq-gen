@@ -1,4 +1,4 @@
-module randomPerm16(rotaryPos, seq_all);
+module randomPerm16(rotaryPos, seq_all); //shuffle 0, 1, .. 15 integers based on rotaryPos
     input [31:0] rotaryPos;
     output [63:0] seq_all;
     wire [63:0] rmapin0, rmapin1, rmapin2, rmapin3, rmapin4, rmapin5, rmapin6, rmapin7;
