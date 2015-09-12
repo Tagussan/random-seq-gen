@@ -1,7 +1,7 @@
 module randomPerm3Map(X_all, Y_all, random);
     input [5:0] X_all;
     input [6:0] random;
-    output [5:0] Y_all;
+    output reg [5:0] Y_all;
     always @* begin
         if (0 <= random && random < 21) begin
             Y_all[1:0] <= X_all[1:0];

@@ -1,4 +1,4 @@
-module restrectedMovSeq(restrected, prob, random, outSeq);
+module restrectedMovSeq(restrected, prob, random, outSeq);//from low bit to high sequence
     input [12:0] random;
     input [1:0] restrected;
     input [2:0] prob;
@@ -7,7 +7,7 @@ module restrectedMovSeq(restrected, prob, random, outSeq);
     biasedMixGen bmix(.block(shuffledBlock), .special(restrected), .outSeq(outSeq), .prob(prob), .random(random[5:0]));
     numberPicker npick(.sel(restrected), .remain(block));
     randomPerm3Map map(.X_all(block), .Y_all(shuffledBlock), .random(random[12:6]));
-end
+endmodule
 
 
 module biasedMixGen(block, special, outSeq, prob, random); //special comes head of block with probablity prob/128
@@ -15,7 +15,7 @@ module biasedMixGen(block, special, outSeq, prob, random); //special comes head 
     input [1:0] special;
     input [2:0] prob;
     input [5:0] random;
-    output [7:0] outSeq;
+    output reg [7:0] outSeq;
     always @* begin
         if (random < prob) begin
             outSeq <= {block, special};
@@ -23,12 +23,12 @@ module biasedMixGen(block, special, outSeq, prob, random); //special comes head 
             outSeq <= {special, block};
         end
     end
-end
+endmodule
 
 module numberPicker(sel, remain);
     input [1:0] sel;
-    output [1:0] picked;
-    output [5:0] remain;
+    output reg [1:0] picked;
+    output reg [5:0] remain;
     always @* begin
         if (sel == 0) begin
             remain <= {2'd1, 2'd2, 2'd3};
@@ -40,4 +40,4 @@ module numberPicker(sel, remain);
             remain <= {2'd0, 2'd1, 2'd2};
         end
     end
-end
+endmodule
