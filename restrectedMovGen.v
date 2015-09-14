@@ -27,7 +27,6 @@ endmodule
 
 module numberPicker(sel, remain);
     input [1:0] sel;
-    output reg [1:0] picked;
     output reg [5:0] remain;
     always @* begin
         if (sel == 0) begin

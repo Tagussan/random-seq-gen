@@ -22,7 +22,6 @@ module randomPerm16(rotaryPos, seq_all); //shuffle 0, 1, .. 15 integers based on
 endmodule
 
 module rotateMapper16(A_all, B_all, shift);
-    input clk, rst;
     input [63:0] A_all;
     input [3:0] shift;
     output [63:0] B_all;
