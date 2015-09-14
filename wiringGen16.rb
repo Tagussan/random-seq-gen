@@ -1,7 +1,30 @@
-wires = []
-for i in (0...8) do
-    wires.push (0...16).to_a.shuffle
+def cycle(wire)
+    pos = 0
+    pos = wire[pos]
+    cnt = 1
+    while pos != 0 do
+        pos = wire[pos]
+        cnt = cnt + 1
+    end
+    cnt
 end
+
+wires = []
+wire = (0...16).to_a.shuffle
+while cycle(wire) != 16 do
+    wire = (0...16).to_a.shuffle
+end
+wires.push(wire.clone)
+wires.push(wire.map { |e| (e+1)%wire.length }.clone)
+wire.rotate!(1)
+wire[2], wire[5] = wire[5], wire[2]
+wires.push(wire.clone)
+wire = (0...16).to_a.shuffle
+while cycle(wire) != 8 do
+    wire = (0...16).to_a.shuffle
+end
+wires.push(wire)
+
 hs = Hash.new
 wires.each do |wire|
     for i in (0...16) do
@@ -11,11 +34,12 @@ wires.each do |wire|
         end
         hs[perm] = 0;
     end
+    puts "//cycle: #{cycle(wire)}"
 end
 
 wires.each do |wire|
     puts "//#{wires.index wire}th: #{wire}"
-    puts "module randomPerm#{wires.index wire}(A_all, B_all);"
+    puts "module randomPermSeed#{wires.index wire}(A_all, B_all);"
     puts "    input [63:0] A_all;"
     puts "    output [63:0] B_all;"
     for i in (0...16) do
