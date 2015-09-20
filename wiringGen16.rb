@@ -10,20 +10,13 @@ def cycle(wire)
 end
 
 wires = []
-wire = (0...16).to_a.shuffle
-while cycle(wire) != 16 do
+for i in 0...8 do
     wire = (0...16).to_a.shuffle
+    while cycle(wire) != 16 do
+        wire = (0...16).to_a.shuffle
+    end
+    wires.push(wire.clone)
 end
-wires.push(wire.clone)
-wires.push(wire.map { |e| (e+1)%wire.length }.clone)
-wire.rotate!(1)
-wire[2], wire[5] = wire[5], wire[2]
-wires.push(wire.clone)
-wire = (0...16).to_a.shuffle
-while cycle(wire) != 8 do
-    wire = (0...16).to_a.shuffle
-end
-wires.push(wire)
 
 hs = Hash.new
 wires.each do |wire|

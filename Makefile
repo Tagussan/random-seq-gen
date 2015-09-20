@@ -1,5 +1,5 @@
-MAIN = restrectedMovSeq
-BENCH = tb_restrectedMovSeq
+MAIN = randomPerm16
+BENCH = tb_randomPerm16
 SOURCES = *.v
 VERILOG = iverilog
 WAVE = gtkwave
