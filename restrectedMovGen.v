@@ -37,6 +37,8 @@ module numberPicker(sel, remain);
             remain <= {2'd0, 2'd1, 2'd3};
         end else if (sel == 3) begin
             remain <= {2'd0, 2'd1, 2'd2};
+        end else begin
+            remain <= 6'bx;
         end
     end
 endmodule

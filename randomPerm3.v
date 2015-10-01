@@ -27,6 +27,8 @@ module randomPerm3Map(X_all, Y_all, random);
             Y_all[5:4] <= X_all[1:0];
             Y_all[3:2] <= X_all[3:2];
             Y_all[1:0] <= X_all[5:4];
+        end else begin
+            Y_all <= 6'bx;
         end
     end
 endmodule
